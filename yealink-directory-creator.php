@@ -20,6 +20,8 @@ define("PASSWORD", "Strong-Password-Here");					// Password for the above accoun
 define("CLIENTID", "Example_API_User");						// API key client ID
 define("CLIENTSECRET", "ExampleKey123");					// API key secret key
 
+define("TERRITORY", "#####");						// Territory for the reseller domain - normally a number
+
 define("DIRECTORYLOCATION", "/var/www/html/example/");		// Absolute path to folder where directories will be stored. INCLUDE TRAILING SLASH.
 define("SRV_CODE", "example-service-code");					// See README for details. If you want to limit results to a certain service code, enter the service code here. If you do not want to limit to service codes then comment this line out.
 
@@ -72,7 +74,8 @@ $token = $token['access_token'];					// Set our API token as $token
 
 $query = array(
     'object' => "domain",			// Request for list of all domains
-    'action' => "read"
+    'action' => "read",
+    'territory' => TERRITORY
 );
 
 $domains  = __doCurl("https://" . SERVER . "/ns-api/", CURLOPT_POST, "Authorization: Bearer " . $token, $query, null, $http_response);
